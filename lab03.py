@@ -32,11 +32,11 @@ if __name__ == '__main__':
     p.fit(train_statements, train_labels)
     predictions = p.predict_proba(test_statements)[:, 1]
 
-    # fpr, tpr, _ = roc_curve(test_labels, predictions)
-    # print(auc(fpr, tpr))
-    # plt.plot(fpr, tpr)
-    # plt.title('Logistic regression')
-    # plt.show()
+    fpr, tpr, _ = roc_curve(test_labels, predictions)
+    print(auc(fpr, tpr))
+    plt.plot(fpr, tpr)
+    plt.title('Logistic regression')
+    plt.show()
 
     # Które słowa najważniejsze?
     coefs = p['logreg'].coef_.flatten().tolist()
